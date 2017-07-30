@@ -1,0 +1,12 @@
+/var/log/velox/*.log {
+  rotate 2
+  daily
+  size 1M
+  missingok
+  copytruncate
+  maxage 100
+  notifempty
+  postrotate
+        /usr/bin/killall -HUP rsyslogd
+  endscript
+}
