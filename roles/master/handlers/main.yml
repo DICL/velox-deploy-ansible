@@ -1,0 +1,6 @@
+---
+- name: Reload Rsyslog
+  service: name=rsyslog state=restarted
+
+- name: Reload logrotate
+  shell: logrotate /etc/logrotate.d/velox-logrotate

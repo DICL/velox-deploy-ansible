@@ -1,0 +1,9 @@
+---
+- name: Copy velox rsyslog configuration file
+  template: 
+    src: ../templates/99-velox.conf
+    dest: /etc/rsyslog.d/99-velox.conf
+    mode: 0644
+  notify:
+    - Reload Rsyslog
+

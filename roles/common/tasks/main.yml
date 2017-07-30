@@ -1,0 +1,11 @@
+---
+- name: Install needed packages
+  apt: pkg={{ item }} state=installed
+  with_items: 
+  - automake
+  - build-essential
+  - libtool
+  - gdb
+  - libboost-all-dev
+  - libsqlite3-dev
+  - libsqlite3-0

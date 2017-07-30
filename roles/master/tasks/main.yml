@@ -1,0 +1,20 @@
+---
+- name: Copy velox rsyslog config file
+  copy: 
+    src: ../files/99-velox-master.conf
+    dest: /etc/rsyslog.d/99-velox.conf
+    mode: 0755
+
+  notify:
+    - Reload logrotate
+    - Reload Rsyslog
+
+- name: Copy velox logrotate config file
+  copy: 
+    src: ../files/velox-logrotate
+    dest: /etc/logrotate.d/velox-logrotate
+    mode: 0644
+
+  notify:
+    - Reload logrotate
+    - Reload Rsyslog
