@@ -1,0 +1,24 @@
+---
+- name: Install needed packages
+  yum: pkg={{ item }} state=installed
+  with_items: 
+  - docker
+  - docker-compose
+  notify:
+    - Reload Docker
+    - Create dirs
+
+- name: Create dirs 
+  file:
+    path: "{{ scratch }}/zookeeper"
+    state: directory
+    owner: "{{ target_user }}"
+    group: "{{ target_user }}"
+    mode: 0744
+
+- name: Deploy repo
+  become: yes
+  become_user: "{{ target_user }}"
+  git: repo=git@github.com:DICL/zk-docker-compose.git dest="{{ scratch }}/zookeeper" version=master
+  notify:
+    Launch zk

@@ -1,0 +1,7 @@
+---
+- name: Reload Docker
+  service: name=docker state=restarted
+  notify: Launch zk
+
+- name: Launch zk
+  shell: docker-compose -f "{{ scratch }}/zookeeper/docker-composer.yml" up --no-recreate -d

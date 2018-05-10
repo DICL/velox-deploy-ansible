@@ -3,7 +3,7 @@
   copy: 
     src: ../files/99-velox-master.conf
     dest: /etc/rsyslog.d/99-velox.conf
-    mode: 0755
+    mode: 0644
 
   notify:
     - Reload logrotate
@@ -18,3 +18,12 @@
   notify:
     - Reload logrotate
     - Reload Rsyslog
+
+- name: Install needed packages
+  yum: pkg={{ item }} state=installed
+  with_items: 
+  - automake
+  - autoconf
+  - libtool
+  - libsqlite3x-devel
+  when: ansible_distribution == "CentOS"

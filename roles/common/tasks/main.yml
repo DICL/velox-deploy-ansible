@@ -9,3 +9,10 @@
   - libboost-all-dev
   - libsqlite3-dev
   - libsqlite3-0
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install needed packages
+  yum: pkg={{ item }} state=installed
+  with_items: 
+  - gdb
+  when: ansible_distribution == "CentOS"

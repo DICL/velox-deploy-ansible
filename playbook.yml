@@ -1,17 +1,17 @@
 ---
-
-- hosts: all
+- hosts: veloxmaster
   become: true
-  remote_user: root
+  roles:
+    - master
+
+- hosts: veloxservers
+  become: true
   roles:
     - common
+    - slaves
 
-- hosts: lynxmaster
+- hosts: zkserver 
+  become: true
   roles:
-    - master 
-
-- hosts: lynx01 lynx02
-  vars:
-    resource_manager: 'lynxmaster'
-  roles:
-    - slaves 
+    - common
+    - zkmaster 

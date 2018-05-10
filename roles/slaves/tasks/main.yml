@@ -7,3 +7,15 @@
   notify:
     - Reload Rsyslog
 
+- name: Create directories
+  file:
+    path: "{{ scratch }}/{{ item }}"
+    state: directory
+    owner: "{{ target_user }}"
+    group: "{{ target_user }}"
+    mode: 0744
+  with_items:
+    - ''
+    - storage
+    - hadoop/storage
+    - hadoop/name

@@ -1,5 +1,5 @@
 /var/log/velox/*.log {
-  rotate 2
+  rotate 5
   daily
   size 1M
   missingok
