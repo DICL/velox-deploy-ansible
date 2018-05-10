@@ -1,4 +1,11 @@
 ---
+
+- name: Create log folder
+  file: 
+    path: /var/log/velox
+    state: directory
+    mode: 0755
+
 - name: Copy velox rsyslog config file
   copy: 
     src: ../files/99-velox-master.conf
