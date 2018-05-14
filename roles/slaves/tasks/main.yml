@@ -19,3 +19,12 @@
     - storage
     - hadoop/storage
     - hadoop/name
+
+- name: Create ldconfig file
+  template:
+    src: ../templates/boost-ld.conf
+    dest: /etc/ld.so.conf.d/boost-ld.conf
+    mode: 0644
+
+- name: Reload ldconfig cache
+  command: ldconfig
