@@ -28,3 +28,15 @@
 
 - name: Reload ldconfig cache
   command: ldconfig
+
+- name: Increase number of fd hard
+  lineinfile:
+    path: /etc/security/limits.conf
+    state: present
+    line: '* hard nofile 64000'
+
+- name: Increase number of fd soft
+  lineinfile:
+    path: /etc/security/limits.conf
+    state: present
+    line: '* soft nofile 64000'
