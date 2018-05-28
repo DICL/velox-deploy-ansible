@@ -5,6 +5,7 @@
   - automake
   - build-essential
   - libtool
+  - sysstat
   - gdb
   - libboost-all-dev
   - libsqlite3-dev
@@ -15,4 +16,5 @@
   yum: pkg={{ item }} state=installed
   with_items: 
   - gdb
+  - sysstat
   when: ansible_distribution == "CentOS"

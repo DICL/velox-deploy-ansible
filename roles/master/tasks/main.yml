@@ -33,4 +33,5 @@
   - autoconf
   - libtool
   - libsqlite3x-devel
+  - git
   when: ansible_distribution == "CentOS"

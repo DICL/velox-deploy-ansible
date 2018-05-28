@@ -1,14 +1,30 @@
 ---
+- hosts: all
+  become: true
+  vars:
+    boost_version: '1.59.0'
+    boost_prefix: '/usr/local'
+  roles:
+    - kawasakitoshiya.boost-install
+  tags:
+    - boost
+    
 - hosts: veloxmaster
   become: true
   roles:
     - master
+
+  tags:
+    - velox
 
 - hosts: veloxservers
   become: true
   roles:
     - common
     - slaves
+  tags:
+    - velox
+
 
 - hosts: zkserver 
   become: true
