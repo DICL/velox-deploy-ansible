@@ -1,0 +1,7 @@
+---
+- hosts: master
+  vars:
+    prefix: '~/sandbox'
+    build_dir: '~/opt' 
+  roles:
+    - ../velox-hadoop-configuration

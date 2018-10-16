@@ -6,6 +6,8 @@
     mode: 0644
   notify:
     - Reload Rsyslog
+  tags:
+    - rsyslog
 
 - name: Create directories
   file:

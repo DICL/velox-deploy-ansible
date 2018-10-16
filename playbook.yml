@@ -8,26 +8,31 @@
     - kawasakitoshiya.boost-install
   tags:
     - boost
+
+# install zookeeper in shared directory
+- hosts: master
+  vars:
+    prefix: '~/sandbox'
+    build_dir: '~/opt' 
+  roles:
+    - vicentebolea.zookeeper_c_lib
+    - velox-hadoop-configuration
     
-- hosts: veloxmaster
+- hosts: master
   become: true
   roles:
     - master
 
-  tags:
-    - velox
-
-- hosts: veloxservers
+- hosts: slaves
   become: true
   roles:
     - common
     - slaves
-  tags:
-    - velox
-
 
 - hosts: zkserver 
   become: true
   roles:
-    - common
     - zkmaster 
+  tags:
+    - zk
+

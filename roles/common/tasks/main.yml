@@ -17,4 +17,12 @@
   with_items: 
   - gdb
   - sysstat
+  - maven
+  when: ansible_distribution == "CentOS"
+
+- name: Enable core dump
+  lineinfile:
+    path: /etc/security/limits.conf
+    state: present
+    line: '* soft core unlimited'
   when: ansible_distribution == "CentOS"

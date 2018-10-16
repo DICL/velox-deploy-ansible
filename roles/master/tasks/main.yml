@@ -6,6 +6,9 @@
     state: directory
     mode: 0755
 
+  tags:
+    - rsyslog
+
 - name: Copy velox rsyslog config file
   copy: 
     src: ../files/99-velox-master.conf
@@ -15,6 +18,8 @@
   notify:
     - Reload logrotate
     - Reload Rsyslog
+  tags:
+    - rsyslog
 
 - name: Copy velox logrotate config file
   copy: 
@@ -25,6 +30,9 @@
   notify:
     - Reload logrotate
     - Reload Rsyslog
+
+  tags:
+    - rsyslog
 
 - name: Install needed packages
   yum: pkg={{ item }} state=installed

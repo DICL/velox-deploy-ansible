@@ -42,5 +42,5 @@ RUN IT
 If you are in this project folder exec:
 
 ```
-ansible-playbook -i ~/.ansible-hosts -K playbook.yml
+ansible-playbook -b -K -i ~/.ansible-hosts playbook.yml
 ```

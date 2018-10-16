@@ -2,6 +2,7 @@
 - name: Install needed packages
   yum: pkg={{ item }} state=installed
   with_items: 
+  - git
   - docker
   - docker-compose
 
@@ -20,6 +21,6 @@
 - name: Deploy repo
   become: yes
   become_user: "{{ target_user }}"
-  git: repo=git@github.com:DICL/zk-docker-compose.git dest="{{ scratch }}/zookeeper" version=master
+  git: repo=https://github.com/DICL/zk-docker-compose.git dest="{{ scratch }}/zookeeper" version=master
   notify:
     - Launch zk

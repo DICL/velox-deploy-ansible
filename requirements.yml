@@ -1,1 +1,5 @@
 - src: kawasakitoshiya.boost-install
+#name: boost-install
+
+- src: vicentebolea.zookeeper_c_lib
+#name: zookeeper_c_lib

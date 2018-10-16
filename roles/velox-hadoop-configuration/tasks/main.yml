@@ -1,0 +1,36 @@
+---
+- name: Install velox-env.sh conf file
+  vars:
+    user: "{{ lookup('env', 'USER') }}"
+  template: 
+    src: ../templates/velox-env.sh
+    dest: ~/.velox-env.sh
+    mode: 0644
+
+- name: Download velox-hadoop
+  git: repo=https://github.com/DICL/velox-hadoop.git dest="~/velox-hadoop" version=master
+
+- name: Download hadoop-etc
+  git: repo=https://github.com/vicentebolea/hadoop-etc.git dest="~/hadoop-etc" version=master
+
+- name: Download hadoop 2.7.3
+  get_url:
+    url: "https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz"
+    dest: "~/opt/hadoop-2.7.3.tar.gz"
+
+- name: Unpack hadoop tarball
+  unarchive:
+    src: "~/opt/hadoop-2.7.3.tar.gz"
+    dest: "~/opt"
+
+#- name: Create hadoop dirs
+#  become: true
+#  file:
+#    owner: {{ target_user }}
+#    group: {{ target_user }}
+#    state: directory
+#    mode: 0755
+#    recurse: yes
+#    path: {{ items }}
+#    with_items:
+#      - "scratch/{{ target_user }}/hadoop/storage/name"
